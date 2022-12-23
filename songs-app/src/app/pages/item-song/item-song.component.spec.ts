@@ -2,19 +2,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { MessageComponent } from './message.component';
+import { ItemSongComponent } from './item-song.component';
 
 describe('MessageComponent', () => {
-  let component: MessageComponent;
-  let fixture: ComponentFixture<MessageComponent>;
+  let component: ItemSongComponent;
+  let fixture: ComponentFixture<ItemSongComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessageComponent],
+      declarations: [ItemSongComponent],
       imports: [IonicModule.forRoot(), RouterModule.forRoot([])]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MessageComponent);
+    fixture = TestBed.createComponent(ItemSongComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

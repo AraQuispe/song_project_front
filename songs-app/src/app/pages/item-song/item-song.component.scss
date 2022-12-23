@@ -27,7 +27,14 @@ ion-item .date {
 }
 
 ion-item ion-icon {
-  color: #c9c9ca;
+  color: #5088a6;
+}
+ion-item ion-icon {
+  font-size: 64px;
+}
+ion-item ion-button ion-icon{
+  color: #ffffff;
+  font-size: 24px;
 }
 
 ion-item ion-note {
@@ -40,20 +47,17 @@ ion-item ion-note.md {
   margin-right: 14px;
 }
 
-.dot {
+.icon-music {
   display: block;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
   align-self: start;
   margin: 16px 10px 16px 16px;
-}
-
-.dot-unread {
-  background: var(--ion-color-primary);
 }
 
 ion-footer ion-title {
   font-size: 11px;
   font-weight: normal;
+}
+
+.options-button{
+  padding-right: 2rem;
 }
