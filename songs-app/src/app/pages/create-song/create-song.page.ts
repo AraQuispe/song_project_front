@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-create-song',
@@ -10,7 +9,6 @@ import {Subscription} from "rxjs";
   styleUrls: ['./create-song.page.scss'],
 })
 export class CreateSongPage implements OnInit {
-  subscription!: Subscription
   ionicForm: FormGroup;
   isSubmitted = false;
 
@@ -44,9 +42,9 @@ export class CreateSongPage implements OnInit {
       let song = new FormData()
       song.append("song_name",this.ionicForm.value["name_song"])
       song.append("artist", this.ionicForm.value["artist"])
-      this.subscription = this.data.createSong(song).subscribe(r =>{
+      this.data.createSong(song).subscribe(r =>{
         this.router.navigate(["../"],{relativeTo: this.activatedRoute}).then(r=>{
-          window.location.reload();
+          this.data.getSongs()
         })
       });
       return
@@ -59,8 +57,4 @@ export class CreateSongPage implements OnInit {
     return mode === 'ios' ? 'Inbox' : '';
   }
 
-  ngOnDestroy() {
-    if (this.subscription != undefined)
-      this.subscription.unsubscribe()
-  }
 }

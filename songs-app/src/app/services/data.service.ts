@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
+import {Observable, Subject, throwError} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import {environment} from "../../environments/environment";
 
@@ -15,12 +15,16 @@ export interface Song {
 })
 export class DataService {
   urlApi = environment.url
+  listSongs = new Subject<Song[]>()
+
   constructor(
     private http: HttpClient
   ) { }
 
-  public getSongs():Observable<any> {
-    return this.http.get<Song[]>(this.urlApi);
+  public getSongs() {
+     this.http.get<Song[]>(this.urlApi).subscribe(response=>{
+       this.listSongs.next(response)
+     })
   }
 
   public getSongById(id: string): Observable<Song> {

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import {DataService, Song} from '../../services/data.service';
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-item-song',
@@ -9,7 +8,6 @@ import {Subscription} from "rxjs";
 })
 export class ItemSongComponent {
   @Input() song?: Song;
-  subscription!: Subscription
 
   isIos() {
     const win = window as any;
@@ -21,13 +19,9 @@ export class ItemSongComponent {
   ) {
   }
   deleteSong( id:String){
-    this.subscription = this.data.deleteSong(id).subscribe(r=>{
-      window.location.reload();
+    this.data.deleteSong(id).subscribe(r=>{
+      this.data.getSongs()
     })
   }
 
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
 }

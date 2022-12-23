@@ -12,6 +12,7 @@ export class HomePage {
   listSongs:Song[] = []
 
   ngOnInit() {
+    this.data.getSongs()
     this.getSongs()
   }
   ngOnChange(){
@@ -21,12 +22,11 @@ export class HomePage {
   refresh(ev: any) {
     setTimeout(() => {
       (ev as RefresherCustomEvent).detail.complete();
-    }, 2000);
-    window.location.reload();
+    }, 3000);
   }
 
   getSongs(): any {
-    this.data.getSongs().subscribe(r=>{
+    this.data.listSongs.subscribe(r=>{
       this.listSongs = r
     })
     return this.listSongs;
