@@ -1,10 +1,10 @@
-<ion-item *ngIf="message" [routerLink]="'/message/' + message.id" [detail]="false">
+<ion-item *ngIf="message" [routerLink]="'/song/' + message._id" [detail]="false">
   <div slot="start" class="icon-music">
     <ion-icon name="musical-notes-sharp"></ion-icon>
   </div>
   <ion-label class="ion-text-wrap">
     <h2>
-      {{ message.songName }}
+      {{ message.song_name }}
     </h2>
     <h3>By: {{ message.artist }}</h3>
     <p>

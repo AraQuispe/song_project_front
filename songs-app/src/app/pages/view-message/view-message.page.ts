@@ -8,7 +8,7 @@ import { DataService, Song } from '../../services/data.service';
   styleUrls: ['./view-message.page.scss'],
 })
 export class ViewMessagePage implements OnInit {
-  public message!: Song;
+  public song: Song = {} as Song;
 
   constructor(
     private data: DataService,
@@ -17,7 +17,9 @@ export class ViewMessagePage implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    this.message = this.data.getMessageById(parseInt(id, 10));
+    this.data.getSongById(id).subscribe(r=>{
+      this.song = r;
+    })
   }
 
   getBackButtonText() {

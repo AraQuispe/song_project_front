@@ -9,20 +9,29 @@ import { DataService, Song } from '../../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  listSongs:Song[] = []
+
+  ngOnInit() {
+    this.getSongs()
+  }
+
   constructor(private data: DataService) { }
 
   refresh(ev: any) {
     setTimeout(() => {
       (ev as RefresherCustomEvent).detail.complete();
-    }, 3000);
+    }, 2000);
+    this.getSongs()
   }
 
   getSongs(): any {
-    let songs: Song[] = []
     this.data.getSongs().subscribe(r=>{
-      songs = r
+      this.listSongs = r
     })
-    return songs;
+    return this.listSongs;
   }
 
+  deleteSong() {
+
+  }
 }
