@@ -13,7 +13,7 @@
 
 
   <ion-list>
-    <app-item-song *ngFor="let message of getMessages()" [message]="message"></app-item-song>
+    <app-item-song *ngFor="let message of getSongs()" [message]="message"></app-item-song>
   </ion-list>
   <ion-fab slot="fixed" horizontal="center" vertical="center" [routerLink]="'/create'">
     <ion-fab-button color="tertiary" >

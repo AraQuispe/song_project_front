@@ -17,8 +17,12 @@ export class HomePage {
     }, 3000);
   }
 
-  getMessages(): Song[] {
-    return this.data.getMessages();
+  getSongs(): any {
+    let songs: Song[] = []
+    this.data.getSongs().subscribe(r=>{
+      songs = r
+    })
+    return songs;
   }
 
 }
