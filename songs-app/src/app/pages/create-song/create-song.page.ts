@@ -1,28 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { DataService, Song } from '../../services/data.service';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-view-message',
+  selector: 'app-create-song',
   templateUrl: './create-song.page.html',
   styleUrls: ['./create-song.page.scss'],
 })
 export class CreateSongPage implements OnInit {
-  public message!: Song;
+  subscription!: Subscription
+  ionicForm: FormGroup;
+  isSubmitted = false;
 
   constructor(
+    public formBuilder: FormBuilder,
     private data: DataService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private router:Router,
+  ) {
+
+    this.ionicForm = this.formBuilder.group({
+      name_song: ['', [Validators.required]],
+      artist: ['', [Validators.required]]
+    })
+  }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    //this.message = this.data.getMessageById(parseInt(id, 10));
+    this.ionicForm.reset()
+  }
+
+  get errorControl() {
+    return this.ionicForm.controls;
+  }
+
+  submitForm() {
+    this.isSubmitted = true;
+    if (!this.ionicForm.valid) {
+      console.log('Please provide all the required values!')
+      return false;
+    } else {
+      let song = new FormData()
+      song.append("song_name",this.ionicForm.value["name_song"])
+      song.append("artist", this.ionicForm.value["artist"])
+      this.subscription = this.data.createSong(song).subscribe(r =>{
+        this.router.navigate(["../"],{relativeTo: this.activatedRoute})
+      });
+      return
+    }
   }
 
   getBackButtonText() {
     const win = window as any;
     const mode = win && win.Ionic && win.Ionic.mode;
     return mode === 'ios' ? 'Inbox' : '';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 }

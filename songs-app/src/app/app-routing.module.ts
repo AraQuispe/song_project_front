@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-song/create-song.module').then(m => m.CreateSongModule)
   },
   {
+    path: 'update/:id',
+    loadChildren: () => import('./pages/update-song/update-song.module').then(m => m.UpdateSongModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

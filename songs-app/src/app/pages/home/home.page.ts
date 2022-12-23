@@ -14,7 +14,9 @@ export class HomePage {
   ngOnInit() {
     this.getSongs()
   }
-
+  ngOnChange(){
+    this.getSongs()
+  }
   constructor(private data: DataService) { }
 
   refresh(ev: any) {
@@ -29,9 +31,5 @@ export class HomePage {
       this.listSongs = r
     })
     return this.listSongs;
-  }
-
-  deleteSong() {
-
   }
 }

@@ -1,22 +1,22 @@
-<ion-item *ngIf="message" [routerLink]="'/song/' + message._id" [detail]="false">
-  <div slot="start" class="icon-music">
+<ion-item *ngIf="song" [detail]="false">
+  <div slot="start" class="icon-music" [routerLink]="'/song/' + song._id">
     <ion-icon name="musical-notes-sharp"></ion-icon>
   </div>
-  <ion-label class="ion-text-wrap">
+  <ion-label class="ion-text-wrap" [routerLink]="'/song/' + song._id">
     <h2>
-      {{ message.song_name }}
+      {{ song.song_name }}
     </h2>
-    <h3>By: {{ message.artist }}</h3>
+    <h3>By: {{ song.artist }}</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
 
   </ion-label>
   <div slot="end" class="options-button">
-    <ion-button size="small" color="warning">
+    <ion-button size="small" color="warning" [routerLink]="'/update/' + song._id">
       <ion-icon slot="icon-only" name="create-outline"></ion-icon>
     </ion-button>
-    <ion-button size="small" color="danger">
+    <ion-button size="small" color="danger" (click)="deleteSong(song._id)">
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
   </ion-button>
   </div>

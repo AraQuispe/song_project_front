@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Song } from '../../services/data.service';
+import {DataService, Song} from '../../services/data.service';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-item-song',
@@ -7,10 +8,24 @@ import { Song } from '../../services/data.service';
   styleUrls: ['./item-song.component.scss'],
 })
 export class ItemSongComponent {
-  @Input() message?: Song;
+  @Input() song?: Song;
+  subscription!: Subscription
 
   isIos() {
     const win = window as any;
     return win && win.Ionic && win.Ionic.mode === 'ios';
+  }
+
+  constructor(
+    private data: DataService
+  ) {
+  }
+  deleteSong( id:String){
+    this.subscription = this.data.deleteSong(id).subscribe()
+  }
+
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 }

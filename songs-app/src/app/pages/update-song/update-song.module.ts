@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CreateSongPage } from './create-song.page';
+import { UpdateSongPage } from './update-song.page';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ViewMessagePageRoutingModule } from './create-song-routing.module';
+import { ViewMessagePageRoutingModule } from './update-song-routing.module';
 
 @NgModule({
     imports: [
@@ -15,6 +15,6 @@ import { ViewMessagePageRoutingModule } from './create-song-routing.module';
         ViewMessagePageRoutingModule,
         ReactiveFormsModule
     ],
-  declarations: [CreateSongPage]
+  declarations: [UpdateSongPage]
 })
-export class CreateSongModule {}
+export class UpdateSongModule {}

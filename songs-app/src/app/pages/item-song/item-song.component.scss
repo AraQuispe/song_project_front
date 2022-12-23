@@ -2,7 +2,6 @@ ion-item {
   --padding-start: 0;
   --inner-padding-end: 0;
 }
-
 ion-label {
   margin-top: 12px;
   margin-bottom: 12px;
@@ -51,6 +50,7 @@ ion-item ion-note.md {
   display: block;
   align-self: start;
   margin: 16px 10px 16px 16px;
+  cursor: pointer;
 }
 
 ion-footer ion-title {
@@ -61,3 +61,8 @@ ion-footer ion-title {
 .options-button{
   padding-right: 2rem;
 }
+
+.ion-text-wrap{
+  cursor: pointer;
+}
+
