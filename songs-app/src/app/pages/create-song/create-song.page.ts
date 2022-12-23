@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { DataService, Song } from '../../services/data.service';
+import { DataService } from '../../services/data.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {Subscription} from "rxjs";
 
@@ -45,7 +45,9 @@ export class CreateSongPage implements OnInit {
       song.append("song_name",this.ionicForm.value["name_song"])
       song.append("artist", this.ionicForm.value["artist"])
       this.subscription = this.data.createSong(song).subscribe(r =>{
-        this.router.navigate(["../"],{relativeTo: this.activatedRoute})
+        this.router.navigate(["../"],{relativeTo: this.activatedRoute}).then(r=>{
+          window.location.reload();
+        })
       });
       return
     }
@@ -58,6 +60,7 @@ export class CreateSongPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    if (this.subscription != undefined)
+      this.subscription.unsubscribe()
   }
 }

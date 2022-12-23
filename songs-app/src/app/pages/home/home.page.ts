@@ -15,7 +15,6 @@ export class HomePage {
     this.getSongs()
   }
   ngOnChange(){
-    this.getSongs()
   }
   constructor(private data: DataService) { }
 
@@ -23,7 +22,7 @@ export class HomePage {
     setTimeout(() => {
       (ev as RefresherCustomEvent).detail.complete();
     }, 2000);
-    this.getSongs()
+    window.location.reload();
   }
 
   getSongs(): any {

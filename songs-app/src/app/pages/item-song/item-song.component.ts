@@ -21,7 +21,9 @@ export class ItemSongComponent {
   ) {
   }
   deleteSong( id:String){
-    this.subscription = this.data.deleteSong(id).subscribe()
+    this.subscription = this.data.deleteSong(id).subscribe(r=>{
+      window.location.reload();
+    })
   }
 
 

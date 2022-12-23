@@ -52,7 +52,9 @@ export class UpdateSongPage implements OnInit, OnDestroy {
       songEdit.song_name = this.ionicForm.value["name_song"]
       songEdit.artist = this.ionicForm.value["artist"]
       this.subscriptionPut = this.data.updateSong(songEdit).subscribe(r =>{
-        this.router.navigate(["../../"], {relativeTo: this.activatedRoute})
+        this.router.navigate(["../../"], {relativeTo: this.activatedRoute}).then(r=>{
+          window.location.reload();
+        })
       });
       return
     }
@@ -65,7 +67,9 @@ export class UpdateSongPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.subscriptionGet != undefined)
     this.subscriptionGet.unsubscribe()
+    if (this.subscriptionPut != undefined)
     this.subscriptionPut.unsubscribe()
   }
 }
