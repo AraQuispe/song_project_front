@@ -52,7 +52,7 @@ export class UpdateSongPage implements OnInit, OnDestroy {
       songEdit.song_name = this.ionicForm.value["name_song"]
       songEdit.artist = this.ionicForm.value["artist"]
       this.subscriptionPut = this.data.updateSong(songEdit).subscribe(r =>{
-        this.router.navigate(["../../"])
+        this.router.navigate(["../../"], {relativeTo: this.activatedRoute})
       });
       return
     }
