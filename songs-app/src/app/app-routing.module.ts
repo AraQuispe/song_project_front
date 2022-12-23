@@ -7,8 +7,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'message/:id',
+    path: 'song/:id',
     loadChildren: () => import('./pages/view-message/view-message.module').then(m => m.ViewMessagePageModule)
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./pages/create-song/create-song.module').then(m => m.CreateSongModule)
   },
   {
     path: '',

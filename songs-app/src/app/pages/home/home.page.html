@@ -15,4 +15,9 @@
   <ion-list>
     <app-item-song *ngFor="let message of getMessages()" [message]="message"></app-item-song>
   </ion-list>
+  <ion-fab slot="fixed" horizontal="center" vertical="center" [routerLink]="'/create'">
+    <ion-fab-button color="tertiary" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

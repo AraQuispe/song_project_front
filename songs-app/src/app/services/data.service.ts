@@ -14,13 +14,18 @@ export class DataService {
   public messages: Song[] = [
     {
       id: 1,
-      songName: 'Matt Chorsey',
-      artist: 'New event: Trip to Vegas'
+      songName: 'Trakatá',
+      artist: 'Ptazeta & F.'
     },
     {
       id: 2,
-      songName: 'Lauren Ruthford',
-      artist: 'Long time no chat',
+      songName: 'Cada que',
+      artist: 'Belanova',
+    },
+    {
+      id: 3,
+      songName: 'Luna',
+      artist: 'Zoé',
     }
   ];
 
@@ -31,6 +36,6 @@ export class DataService {
   }
 
   public getMessageById(id: number): Song {
-    return this.messages[id];
+    return this.messages[id-1];
   }
 }
